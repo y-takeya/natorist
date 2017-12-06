@@ -1,0 +1,30 @@
+//メニュー選択画面
+<!doctype html>
+
+<ons-page>
+   <ons-tool-bar>
+   <div class="center">
+   メニュー
+   </div>
+   </ons-tool-bar>
+
+ <div>
+    <ons-list　var="menu">
+     
+        <ons-list-item class="menu-item" onclick="menu.pushPage('map.html')"  modifier="chevron">
+            <ons-icon icon="ion-map"></ons-icon>
+            マップ
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" onclick="menu.pushPage('coupon.html')"  modifier="chevron">
+            <ons-icon icon="ion-information"></ons-icon>
+            クーポン
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" onclick="menu.pushPage('setting.html')"  modifier="chevron">
+            <ons-icon icon="ion-cog"></ons-icon>
+            設定
+        </ons-list-item>
+    </ons-list>
+    </div>
+</ons-page>
