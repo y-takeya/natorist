@@ -12,13 +12,14 @@
         "cordova-custom-config@2.0.3",
         "cordova-plugin-inappbrowser@1.7.1"
     ],
-    "title-ja": "てすと",
+    "title-ja": "あ",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
     "platform": [
-        "winrt"
+        "android",
+        "ios"
     ],
-    "name": "generated-1512563710-5a267b17e78885dd658b456c"
+    "name": "generated-1513055449-5a1ad50be7888585228b4567"
 }
