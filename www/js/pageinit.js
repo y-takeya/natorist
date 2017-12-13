@@ -41,3 +41,6 @@ function onClickTopBtn(page){
     NatNavi.pushPage(page,options);
 }
 
+
+ ons.bootstrap();
+
