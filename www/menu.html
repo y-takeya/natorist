@@ -1,0 +1,30 @@
+//メニュー選択画面
+
+<ons-page modifier="menu-page">
+    <ons-toolbar modifier="transparent">
+        <div class="right">
+            <ons-toolbar-button class="menu-close" ng-click="menu.close()">
+                </ons-icon>閉じる
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list class="menu-list">
+        <ons-list-item class="menu-item" onclick="menu.setAbovePage('map.html', {closeMenu: true})">
+            <ons-icon icon="ion-map"></ons-icon>
+            マップ
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" onclick="menu.setAbovePage('coupon.html', {closeMenu: true})">
+            <ons-icon icon="ion-information"></ons-icon>
+            クーポン
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" onclick="menu.setAbovePage('setting.html', {closeMenu: true})">
+            <ons-icon icon="ion-cog"></ons-icon>
+            設定
+        </ons-list-item>
+
+
+    </ons-list>
+</ons-page>
