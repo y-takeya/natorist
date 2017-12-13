@@ -16,25 +16,7 @@
     <script type="text/javascript" charset="utf-8" src="components/loader.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
-  <script>
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
 
-    window.fn = {};
-    window.fn.open = function() {
-      var menu = document.getElementById('menu');
-      menu.open();
-    };
-    window.fn.load = function(page) {
-      var content = document.getElementById('content');
-      var menu = document.getElementById('menu');
-      content
-        .load(page)
-        .then(menu.close.bind(menu));
-    };
-
-  </script>
 </head>
 <body>
     <script type="text/javascript">
@@ -48,38 +30,20 @@
     }
     </script>
 
-<ons-splitter>
-    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
-      <ons-page>
-        <ons-list>
-          <ons-list-item onclick="fn.load('main.html')" tappable>
-           main
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('map.html')" tappable>
-            map
-          </ons-list-item>
-           <ons-list-item onclick="fn.load('coupon.html')" tappable>
-           coupon
-          </ons-list-item>
-           <ons-list-item onclick="fn.load('event.html')" tappable>
-           event
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('public.html')" tappable>
-            public
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('setting.html')" tappable>
-           setting
-          </ons-list-item>
-        </ons-list>
-      </ons-page>
-    </ons-splitter-side>
-  <ons-splitter-content id="content" page="main.html"></ons-splitter-content> 
-  </ons-splitter>
+<ons-sliding-menu var="app.menu" main-page="map.html" menu-page="menu.html" max-slide-distance="200px" type="reveal" side="left">
+</ons-sliding-menu>
 
-<ons-navigator id="NatNavi" page="main.html"></ons-navigator>
+<ons-page modifier="menu-page">
+  <ons-page>
+    <!-- menu page's contents -->
+  </ons-page>
+</ons-template>
+
+
+
+    <ons-navigator id="NatNavi" page="main.html"></ons-navigator>
     
-
-
+    
 
 
 </body>
