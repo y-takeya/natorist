@@ -12,7 +12,7 @@
         "cordova-custom-config@2.0.3",
         "cordova-plugin-inappbrowser@1.7.1"
     ],
-    "title-ja": "あ",
+    "title-ja": "",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
@@ -21,5 +21,5 @@
         "android",
         "ios"
     ],
-    "name": "generated-1513055449-5a1ad50be7888585228b4567"
+    "name": "generated-1513134890-5a2a1694e78885fd398b4567"
 }
