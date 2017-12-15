@@ -1,5 +1,17 @@
+<ons-page id="coupon-page">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">クーポン情報</div>
 
-<form action="クーポンの送信先" method="post">
+         <div class="right">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+
+
+    </ons-toolbar>
+   <form action="クーポンの送信先" method="post">
 
 <h1>クーポンを選択してください。</h1>
 
@@ -16,3 +28,4 @@
 <p><input type="submit" value="送信"></p>
 
 </form>
+</ons-page>
