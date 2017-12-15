@@ -1,17 +1,17 @@
 <ons-page>
     <ons-toolbar>
         <div class="center">NATORIST開発中</div>
-        <div class="left"><ons-back-button>戻る</ons-back-button></div>
-
-         <div class="right">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-
+        <ons-sliding-menu var="app.menu" main-page="map.html" menu-page="menu.html" max-slide-distance="200px" type="reveal" side="left">
+</ons-sliding-menu>
     </ons-toolbar>
 
     <div>
+        <section style="padding: 1px">
+            <ons-button modifier="large" onclick="save_geopoint()">マーカー登録</ons-button>
+        </section>
+        <section style="padding: 1px">
+            <ons-button modifier="large" onclick ="find_geopoint()">マーカーチェック</ons-button>
+        </section>
         <section style="padding: 1px">
             <ons-button modifier="large" onclick ="current_geopoint()">現在位置に移動</ons-button>
         </section>

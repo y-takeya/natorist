@@ -35,12 +35,3 @@ function onClickInfo(title,detail,img){
     NatNavi.pushPage('info.html', options);
 };
 
-function onClickTopBtn(page){
-     var options = {};
-    options.animation = 'slide';
-    NatNavi.pushPage(page,options);
-}
-
-
- ons.bootstrap();
-
