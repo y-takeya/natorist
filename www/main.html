@@ -3,7 +3,7 @@
 
    
         <div class="center">なろう！なとりすと！</div>
-          <div class="right">
+          <div class="left">
           <ons-toolbar-button onclick="fn.open()">
             <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
             </ons-toolbar-button>
@@ -13,15 +13,15 @@
 
     </ons-toolbar>
     <div>
-        <ons-button modifier="btn" onclick="onClickTopBtn('map.html');">観光MAP</ons-button>
-        <ons-button modifier="btn" onclick="onClickTopBtn('coupon.html');">クーポン</ons-button>
+        <ons-button modifier="btn" onclick="fn.load('map.html')" tappable>観光MAP</ons-button>
+        <ons-button modifier="btn" onclick="fn.load('coupon.html')" tappable>クーポン</ons-button>
         <br>
         <br>
-        <ons-button modifier="btn" onclick="onClickTopBtn('event.html');">イベント</ons-button>
-        <ons-button modifier="btn" onclick="onClickTopBtn('public.html');">公共機関</ons-button>
+        <ons-button modifier="btn" onclick="fn.load('event.html')" tappable>イベント</ons-button>
+        <ons-button modifier="btn" onclick="fn.load('public.html')" tappable>公共機関</ons-button>
     </div>
 
-    
+
     <!--
     お知らせ画面
     

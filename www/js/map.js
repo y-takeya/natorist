@@ -59,7 +59,8 @@ function writemap(lat,lon) {
     map.addControl(cross);
 
     console.log(lat+":"+lon+":");
-    var lonLat = new OpenLayers.LonLat(lat,lon)
+    //名取の表示
+    var lonLat = new OpenLayers.LonLat(140.882877,38.172748)  
         .transform(
             projection4326, 
             projection900913
@@ -100,6 +101,7 @@ var geoOption = {
     timeout: 6000
 };
 
+
 //現在地を保持するクラスを作成
 function CurrentPoint(){
     geopoint=null;  //端末の位置情報を保持する
@@ -110,6 +112,7 @@ function current_geopoint(){
     navigator.geolocation.getCurrentPosition(onCurrentSuccess, onGeoError, geoOption);
      console.log("current_geopoint");
 }
+
 //現在値の位置情報取得に成功した場合のコールバック
 function onCurrentSuccess(position){
     current = new CurrentPoint();    

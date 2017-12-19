@@ -42,5 +42,5 @@ function onClickTopBtn(page){
 }
 
 
- ons.bootstrap();
+
 
