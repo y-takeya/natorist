@@ -1,13 +1,32 @@
+
 <ons-page id="map-page">
+
+ <script type="text/javascript">
+    // Geolocation APIに対応している
+    if (navigator.geolocation) {
+      //alert("この端末では位置情報が取得できます");
+     navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, geoOption);
+    // Geolocation APIに対応していない
+    } else {
+      alert("この端末では位置情報が取得できません");
+    }
+    </script>
+  
     <ons-toolbar>
         <div class="center">NATORIST開発中</div>
-        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+       
 
-         <div class="right">
+         <div class="left">
           <ons-toolbar-button onclick="fn.open()">
             <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
           </ons-toolbar-button>
         </div>
+        
+          <div class="right">
+        <ons-back-button >戻る</ons-back-button>
+        </div>
+        
+
 
     </ons-toolbar>
 
@@ -29,12 +48,16 @@
             </section>
         </ons-col>
         </ons-row>
+       <section style="padding: 1px">
+            <ons-button modifier="large" onclick ="find_geopoint()">観光地</ons-button>
+        </section>
 
         <section>
-                <div id="canvas" style="width:100%; height: 300px"></div>
+                <div id="canvas" style="width:100%; height: 400px"></div>
         </section>
    </div>
   
+  <!--
   <div>
   <ul id="nav">
   <li>
@@ -48,6 +71,6 @@ SNS
   </li>
   </ul>
   
-  </div>
+  </div> -->
 </ons-page>
 
