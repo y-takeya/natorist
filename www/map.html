@@ -1,5 +1,6 @@
 
-<ons-page>
+<ons-page id="map-page">
+
  <script type="text/javascript">
     // Geolocation APIに対応している
     if (navigator.geolocation) {
@@ -10,8 +11,6 @@
       alert("この端末では位置情報が取得できません");
     }
     </script>
-  
-
   
     <ons-toolbar>
         <div class="center">NATORIST開発中</div>
@@ -32,7 +31,9 @@
     </ons-toolbar>
 
     <div>
-     <ons-row>
+
+        <ons-row>
+
         <ons-col width="40%">
             <section style="padding: 1px">
             <ons-button  id="tracking_btn" modifier="large" onclick ="tracking()">表示切替</ons-button>
@@ -49,6 +50,7 @@
             </section>
         </ons-col>
         </ons-row>
+
     <p>
             <form name="chbox">
             <input type="checkbox" name="select" value="イベント" >イベント
@@ -60,6 +62,12 @@
 
 
 </p>
+
+       <section style="padding: 1px">
+            <ons-button modifier="large" onclick ="find_geopoint()">観光地</ons-button>
+        </section>
+
+
         <section>
                 <div id="canvas" style="width:100%; height: 400px"></div>
         </section>
