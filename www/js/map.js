@@ -6,7 +6,12 @@ var popup = null;
 
 var markerType ='イベント';
 var dataStore ='tmpMarkers';
-var checkDataStore='tmpMarkers';
+var checkDataStore='';
+
+
+var mode = 0;
+var markerUpdateTimer;
+var meMarker;
 
 ons.ready(function(){
     console.log('Onsen UI is ready!');
@@ -66,8 +71,60 @@ function writemap(lat,lon) {
             projection900913
         );
     map.setCenter(lonLat, 15);
+    
+    //現在地のマーカー
+    meMarker = new OpenLayers.Layer.Markers("Markers");
+    map.addLayer(meMarker);
 }
 
+function startTracking(){
+    var watchId = navigator.geolocation.watchPosition( successWatch , onGeoError , geoOption2) ;
+}
+
+function successWatch(position){
+    //現在地にマーカーを表示
+    //console.log(position.coords.latitude+":"+position.coords.longitude);
+    var iconsize = new OpenLayers.Size(16, 16);
+    var point    = new OpenLayers.Pixel(-(iconsize.w/2), -iconsize.h/2);
+    var icon = selectIcon('現在地');
+    var marker = new OpenLayers.Marker(
+        new OpenLayers.LonLat(position.coords.longitude,position.coords.latitude)
+                    .transform(projection4326,projection900913),
+        new OpenLayers.Icon(icon, iconsize, point)
+    );
+    meMarker.destroy();
+    
+    if(mode != 0){
+        //console.log(position.coords.latitude+":"+position.coords.longitude);
+        meMarker = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(meMarker);
+        meMarker.addMarker(marker);
+    }
+    
+    if(mode == 2) {
+        var lonLat = new OpenLayers.LonLat(
+            position.coords.longitude,
+            position.coords.latitude ).transform(
+              new OpenLayers.Projection("EPSG:4326"),
+              map.getProjectionObject() );
+          map.setCenter(lonLat);
+    }
+}
+
+function stopTracking(){
+    // 位置情報の追跡を中止する
+    navigator.geolocation.clearWatch( watchId ) ;
+}
+
+function startDrawCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(onInitGeoSuccess, onGeoError, geoOption);
+}
+
+//OSMの描画時に位置情報取得に成功した場合のコールバック
+function onInitGeoSuccess(position){
+    writemap(position.coords.longitude,position.coords.latitude);        
+    startTracking();
+};
 
 
 //OSMの描画時に位置情報取得に成功した場合のコールバック
@@ -96,11 +153,11 @@ function onGeoError(error){
       }
 };
 
+
 //位置情報取得時に設定するオプション
 var geoOption = {
     timeout: 6000
 };
-
 
 //現在地を保持するクラスを作成
 function CurrentPoint(){
@@ -112,7 +169,6 @@ function current_geopoint(){
     navigator.geolocation.getCurrentPosition(onCurrentSuccess, onGeoError, geoOption);
      console.log("current_geopoint");
 }
-
 //現在値の位置情報取得に成功した場合のコールバック
 function onCurrentSuccess(position){
     current = new CurrentPoint();    
@@ -122,7 +178,7 @@ function onCurrentSuccess(position){
 };
 
 //中心地をポイントとして登録する
- function save_geopoint(){
+/* function save_geopoint(){
     //alert("save_geopoint");
     var lonLat = map.getCenter().transform(projection900913,projection4326);
     lonLat.lat = Math.round(lonLat.lat*1000000)/1000000;
@@ -214,7 +270,7 @@ function onCurrentSuccess(position){
             });
         };
     }
-}
+} */
 
 //登録されたポイントを引き出し地図上に表示する
 function find_geopoint(){
@@ -223,18 +279,19 @@ function find_geopoint(){
     lonLat.lon = Math.round(lonLat.lon*1000000)/1000000;
         var geoPoint = new ncmb.GeoPoint(lonLat.lat, lonLat.lon);
         console.log("findpoints:"+lonLat.lat + ":" + lonLat.lon);
-        
-        navigator.notification.prompt(
+        onPrompt();
+    /*    navigator.notification.prompt(
         '',  // メッセージ
         onPrompt,                  // 呼び出すコールバック
         'チェックするデータストアの設定',            // タイトル
         ['設定','やめる'],             // ボタンのラベル名
         checkDataStore                 // デフォルトのテキスト
-    );
-
+    );  */
+  
     function onPrompt(results) {
-        if(results.buttonIndex != 1)  return;
-        checkDataStore = results.input1;
+      
+      //  if(results.buttonIndex != 1)  return;
+      //  checkDataStore = results.input1;
         
         var PlacePointsClass = ncmb.DataStore(checkDataStore);
         //ニフティクラウド mobile backendにアクセスして検索開始位置を指定
@@ -246,6 +303,7 @@ function find_geopoint(){
                     // すでに別なポップアップが開いていたら消します
                     if (popup) map.removePopup(popup);
                 }
+                
                 for (var i = 0; i < results.length; i++) {
                     var result = results[i];
                     var markers = new OpenLayers.Layer.Markers("Markers");
@@ -289,8 +347,8 @@ function find_geopoint(){
                     markers.addMarker(marker);
                 }
             });
-        };
-
+       } ;
+    
     };
 
 function selectIcon(type) {
@@ -304,4 +362,100 @@ function selectIcon(type) {
     }
     return icon;
 }
+
+//チェックボックス
+function Checkbox(){
+ var flag = false; // 選択されているか否かを判定する変数
+   // チェックボックスの数だけ判定を繰り返す
+    fn.load('map.html'); //再読み込み        
+     
+    for(var i=0; i<document.chbox.elements.length-1;i++){
+        // i番目のチェックボックスがチェックされているかを判定
+        if(document.chbox.elements[i].checked){
+        flag = true;
+            if(document.chbox.elements[i].value=="イベント"){
+                checkDataStore='Marker_Event';
+                }
+            else if(document.chbox.elements[i].value=="観光"){
+                checkDataStore='Marker_Kanko';
+                }
+            else if(document.chbox.elements[i].value=="クーポン"){
+                checkDataStore='Marker_Coupon';
+                }
+            else if(document.chbox.elements[i].value=="避難所"){
+                checkDataStore='Marker_Hinan';
+                }
+                find_geopoint();
+        }
+    }
+}
+
+function search(){
+    list=new Array;
+list[0]="apple";
+list[1]="orange";
+    for(i=0;i<list.length;i++){
+document.write("<option value="+list[i]+">"+list[i]+"</option>");
+}
+ 
+}
+
+//探索
+function tracking() {
+    switch(mode){
+        case 0: //現在地を非表示
+            mode = 1;  
+            tracking_mode.innerHTML = '現在地を表示';
+            break; 
+    
+        case 1: //現在地を表示
+            watch = navigator.compass.watchHeading(
+              function (heading) {
+                $("#compass")
+                  .css("transform", "rotate(" + heading.magneticHeading + "deg)");
+                   //console.log('Orientation: ' + heading.magneticHeading);
+              },
+              function (err) {
+                //console.log('watchHeading:'+err.message);
+              },
+              {frequency: 1000}
+            );
+            mode = 2;
+            tracking_mode.innerHTML = '現在地を中心に表示';
+            break;
+            
+        case 2: //現在地を中心に表示
+            navigator.compass.clearWatch(watch);
+            mode = 0;
+            $("#compass")
+                  .css("transform", "rotate(0deg)");
+            tracking_mode.innerHTML = '現在地を非表示';
+            break;
+    }
+}
+    
+    function refresh() {
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          lonLat = new OpenLayers.LonLat(
+            pos.coords.longitude,
+            pos.coords.latitude ).transform(
+              new OpenLayers.Projection("EPSG:4326"),
+              map.getProjectionObject() );
+          map.setCenter(lonLat);
+//        showMsg('getCurrentPosition',
+//          pos.coords.longitude + ', ' +  pos.coords.latitude);
+        },
+        function(err) {
+          console.log('getCurrentPosition:'+err.message);
+        },
+        {maximumAge: 10000, timeout: 5000, enableHighAccuracy: true}
+      );
+    }
+
+
+
+       
+
+
 
