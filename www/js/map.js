@@ -79,8 +79,8 @@ function writemap(lat,lon) {
     //現在地のマーカー
     meMarker = new OpenLayers.Layer.Markers("Markers");
     map.addLayer(meMarker);
-<<<<<<< HEAD
-}
+
+
 
 function startTracking(){
     var watchId = navigator.geolocation.watchPosition( successWatch , onGeoError , geoOption2) ;
@@ -121,8 +121,7 @@ function stopTracking(){
     navigator.geolocation.clearWatch( watchId ) ;
 }
 
-=======
-}
+
 
 function startTracking(){
     var watchId = navigator.geolocation.watchPosition( successWatch , onGeoError , geoOption2) ;
@@ -163,7 +162,7 @@ function stopTracking(){
     navigator.geolocation.clearWatch( watchId ) ;
 }
 
->>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
+
 function startDrawCurrentPosition() {
     navigator.geolocation.getCurrentPosition(onInitGeoSuccess, onGeoError, geoOption);
 }
@@ -420,8 +419,6 @@ function selectIcon(type) {
     return icon;
 }
 
-<<<<<<< HEAD
-=======
 //チェックボックス
 function Checkbox(){
  var flag = false; // 選択されているか否かを判定する変数
@@ -459,7 +456,6 @@ document.write("<option value="+list[i]+">"+list[i]+"</option>");
  
 }
 
->>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
 //探索
 function tracking() {
     switch(mode){
@@ -513,8 +509,3 @@ function tracking() {
       );
     }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
