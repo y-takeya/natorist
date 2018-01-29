@@ -25,7 +25,33 @@ table.installationData td {
     overflow-x: auto;
 }
 
+<<<<<<< HEAD
+#nav{
+    list-style-type: none;
+    overflow: hidden;
+}
+
+#nav li{
+    width: 44%;
+    text-align: center;
+    background-color: #333;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 2px;
+}
+
+#nav li a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.btn {
+=======
 ons-button[modifier="btn"] {
+>>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
     display: inline-block;
     color: #FFF;
     width: 120px;
@@ -37,8 +63,17 @@ ons-button[modifier="btn"] {
     overflow: hidden;  
     background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
     transition: .4s;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
+.cal {
+    height: 250px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+=======
 button.button1{
     /* 文字サイズを1.4emに指定 */
     font-size: 1.4em;
@@ -53,3 +88,4 @@ button.button1{
 
 
 
+>>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
