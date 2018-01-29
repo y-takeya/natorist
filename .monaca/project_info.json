@@ -10,24 +10,14 @@
         "cordova-plugin-whitelist@1.3.2",
         "cordova-plugin-splashscreen@4.0.3",
         "cordova-custom-config@2.0.3",
-        "cordova-plugin-inappbrowser@1.7.1"
+        "cordova-plugin-inappbrowser@1.7.1",
+        "cordova-plugin-device-orientation@1.0.7"
     ],
-
     "title-ja": "",
-
-    "title-ja": "あ",
-
     "title-en": "",
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
-    "platform": [
-        "android",
-        "ios"
-    ],
-
-    "name": "generated-1513154864-5a2a1694e78885fd398b4567"
-
-   
-
+    "platform": [],
+    "name": "generated-1517182247-5a683b5ce788854d258b4567"
 }

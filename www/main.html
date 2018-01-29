@@ -1,33 +1,54 @@
-<ons-page>
+<ons-page id="main-page">
+    
+    <body style="background-color : #00ffff">
     <ons-toolbar>
-
-   
-        <div class="center">なろう！なとりすと！</div>
-          <div class="right">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+        <div class="center" style="background-color : #00ffff">なろう！なとりすと！</div>
+        <div class="left" style="background-color : #00ffff">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
             </ons-toolbar-button>
-            </div>
-
-       
-
+        </div>
+        <div class="right" style="background-color : #00ffff"></div>
     </ons-toolbar>
-    <div>
-        <ons-button modifier="btn" onclick="onClickTopBtn('map.html');">観光MAP</ons-button>
-        <ons-button modifier="btn" onclick="onClickTopBtn('coupon.html');">クーポン</ons-button>
-        <br>
-        <br>
-        <ons-button modifier="btn" onclick="onClickTopBtn('event.html');">イベント</ons-button>
-        <ons-button modifier="btn" onclick="onClickTopBtn('public.html');">公共機関</ons-button>
-    </div>
+    
+    <ons-carousel swipeable overscrollable auto-scroll auto-scroll-ratio="0.2" var="carousel" class="cal">
+        <div id = "newsItems"></div> <!-- アイテムをjavascriptでかける-->
+    </ons-carousel>
 
+    <!-- <ons-carousel swipeable auto-scroll overscrollable class="carousel">
+        <ons-carousel-item>
+            <ons-button onclick="window.open('http://www.kankou.natori.miyagi.jp/tokusan/1387');" class="carousel">アイテム1</ons-button>
+        </ons-carousel-item>
+        <ons-carousel-item>
+            <ons-button onclick="window.open('http://www.kankou.natori.miyagi.jp/');" class="carousel">アイテム2</ons-button>
+        </ons-carousel-item>
+        <ons-carousel-item>
+            <ons-button onclick="window.open('http://www.kankou.natori.miyagi.jp/');" class="carousel">アイテム3</ons-button>        
+        </ons-carousel-item>
+    </ons-carousel> -->
     
-    <!--
-    お知らせ画面
-    
-    
-    
-    -->
-    
-
+    <center>
+        <div>
+            <ons-button onclick="fn.load('map.html')" class="btn">
+                <ons-icon icon="ion-android-map" size="20px"></ons-icon>
+                観光MAP
+            </ons-button>
+            &nbsp;&nbsp;
+            <ons-button onclick="fn.load('coupon.html')" class="btn">
+                <ons-icon icon="ion-ios-pricetags" size="20px"></ons-icon>
+                クーポン
+            </ons-button>
+            <br />
+            <ons-button onclick="fn.load('event.html')" class="btn">
+                <ons-icon icon="fa-calendar-o" size="20px"></ons-icon>
+                イベント    
+            </ons-button>
+            &nbsp;&nbsp;
+            <ons-button onclick="window.open('http://www.city.natori.miyagi.jp/bunya/introduction/access');" class="btn">
+                <ons-icon icon="ion-android-subway" size="20px"></ons-icon>
+                アクセス
+            </ons-button>
+        </div>
+    </center>
+    </body>
 </ons-page>
