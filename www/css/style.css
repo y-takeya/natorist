@@ -25,6 +25,7 @@ table.installationData td {
     overflow-x: auto;
 }
 
+<<<<<<< HEAD
 #nav{
     list-style-type: none;
     overflow: hidden;
@@ -48,6 +49,9 @@ table.installationData td {
 }
 
 .btn {
+=======
+ons-button[modifier="btn"] {
+>>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
     display: inline-block;
     color: #FFF;
     width: 120px;
@@ -63,8 +67,25 @@ table.installationData td {
     margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 .cal {
     height: 250px;
     width: 100%;
     margin-bottom: 15px;
 }
+=======
+button.button1{
+    /* 文字サイズを1.4emに指定 */
+    font-size: 1.4em;
+ 
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+ 
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+}
+
+
+
+>>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
