@@ -13,10 +13,6 @@ var mode = 0;
 var markerUpdateTimer;
 var meMarker;
 
-var mode = 0;
-var markerUpdateTimer;
-var meMarker;
-
 ons.ready(function(){
     console.log('Onsen UI is ready!');
 });
@@ -79,8 +75,7 @@ function writemap(lat,lon) {
     //現在地のマーカー
     meMarker = new OpenLayers.Layer.Markers("Markers");
     map.addLayer(meMarker);
-
-
+}
 
 function startTracking(){
     var watchId = navigator.geolocation.watchPosition( successWatch , onGeoError , geoOption2) ;
@@ -120,48 +115,6 @@ function stopTracking(){
     // 位置情報の追跡を中止する
     navigator.geolocation.clearWatch( watchId ) ;
 }
-
-
-
-function startTracking(){
-    var watchId = navigator.geolocation.watchPosition( successWatch , onGeoError , geoOption2) ;
-}
-
-function successWatch(position){
-    //現在地にマーカーを表示
-    //console.log(position.coords.latitude+":"+position.coords.longitude);
-    var iconsize = new OpenLayers.Size(16, 16);
-    var point    = new OpenLayers.Pixel(-(iconsize.w/2), -iconsize.h/2);
-    var icon = selectIcon('現在地');
-    var marker = new OpenLayers.Marker(
-        new OpenLayers.LonLat(position.coords.longitude,position.coords.latitude)
-                    .transform(projection4326,projection900913),
-        new OpenLayers.Icon(icon, iconsize, point)
-    );
-    meMarker.destroy();
-    
-    if(mode != 0){
-        //console.log(position.coords.latitude+":"+position.coords.longitude);
-        meMarker = new OpenLayers.Layer.Markers("Markers");
-        map.addLayer(meMarker);
-        meMarker.addMarker(marker);
-    }
-    
-    if(mode == 2) {
-        var lonLat = new OpenLayers.LonLat(
-            position.coords.longitude,
-            position.coords.latitude ).transform(
-              new OpenLayers.Projection("EPSG:4326"),
-              map.getProjectionObject() );
-          map.setCenter(lonLat);
-    }
-}
-
-function stopTracking(){
-    // 位置情報の追跡を中止する
-    navigator.geolocation.clearWatch( watchId ) ;
-}
-
 
 function startDrawCurrentPosition() {
     navigator.geolocation.getCurrentPosition(onInitGeoSuccess, onGeoError, geoOption);
@@ -206,12 +159,6 @@ var geoOption = {
     timeout: 6000
 };
 
-var geoOption2 = {
-    "enableHighAccuracy": true ,
-    "timeout": 1000000 ,
-	"maximumAge": 0 ,
-} ;
-
 //現在地を保持するクラスを作成
 function CurrentPoint(){
     geopoint=null;  //端末の位置情報を保持する
@@ -222,7 +169,6 @@ function current_geopoint(){
     navigator.geolocation.getCurrentPosition(onCurrentSuccess, onGeoError, geoOption);
      console.log("current_geopoint");
 }
-
 //現在値の位置情報取得に成功した場合のコールバック
 function onCurrentSuccess(position){
     current = new CurrentPoint();    
@@ -413,8 +359,6 @@ function selectIcon(type) {
         case '観光':        icon = 'img/marker_kan32.png'; break;
         case 'クーポン':    icon = 'img/marker_cuu32.png'; break;
         case '避難所':      icon = 'img/marker_hin32.png'; break;
-        case '現在地':      icon = 'img/me2.png'; break;
-        case '矢':           icon = 'img/arrow.png'; break;
     }
     return icon;
 }
@@ -508,4 +452,6 @@ function tracking() {
         {maximumAge: 10000, timeout: 5000, enableHighAccuracy: true}
       );
     }
+
+
 
