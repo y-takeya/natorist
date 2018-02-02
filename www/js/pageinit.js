@@ -5,10 +5,7 @@ var reader;
 document.addEventListener('init', function(event) {
   var page = event.target;
   console.log("page init");
-<<<<<<< HEAD
-  
-=======
->>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
+
   switch(page.id) {
   case 'info-page':
       //情報ページ表示時の初期設定
@@ -31,12 +28,9 @@ document.addEventListener('init', function(event) {
     //document.getElementById("info-img").src = page.data.img;
     document.getElementById("info-detail").innerHTML = page.data.detail;
     break;
-<<<<<<< HEAD
     
     case 'map-page':
-=======
-  case 'map-page':
->>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
+
     //マップ表示
     console.log("map page init");
     // Geolocation APIに対応している
@@ -48,7 +42,7 @@ document.addEventListener('init', function(event) {
       alert("この端末では位置情報が取得できません");
     }
     break;
-<<<<<<< HEAD
+
     
      case 'main-page':
     //メインページ
@@ -85,8 +79,7 @@ document.addEventListener('init', function(event) {
             loadNews(idx,results,reader);
         })
     break; 
-=======
->>>>>>> d9995faca041e1b4ae036a12cfe5062b8fb7bac4
+
   }
 });
 
