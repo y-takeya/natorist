@@ -1,15 +1,16 @@
 <ons-page id="coupon-page">
- 
-    <div style="text-align: center">
-        <h1 id="info-title">タイトル</h1>
-        <image id="info-img" src=""></image>
-        <h2 id="info-detail">説明文</h2>
-    </div> 
-
-   <ons-tabbar var="coupon">
-       
-    <ons-tab page="mitoku.html" label="未取得" icon="fa-star"></ons-tab>
-    <ons-tab page="syutoku.html" label="取得済み" icon="fa-gear"></ons-tab>
-
-</ons-tabbar>
+  <ons-toolbar>
+        <div class="center">クーポン一覧</div>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+  
+  <ons-list>
+   <div id="couponItems">
+   </div>
+  </ons-list>
+  
 </ons-page>

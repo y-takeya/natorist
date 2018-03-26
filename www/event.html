@@ -1,19 +1,15 @@
 <ons-page id="event-page">
-    <ons-toolbar>
-       
-        <div class="center">イベント情報</div>
-
-         <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-          </ons-toolbar-button>
+  <ons-toolbar>
+        <div class="center">イベント一覧</div>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+            </ons-toolbar-button>
         </div>
-
-
     </ons-toolbar>
-    <div style="text-align: center">
-        <h1 id="info-title">タイトル</h1>
-        <image id="info-img" src=""></image>
-        <h2 id="info-detail">説明文</h2>
-    </div>
+
+  <ons-list>
+   <div id="eventItems">
+   </div>
+   </ons-list>
 </ons-page>
